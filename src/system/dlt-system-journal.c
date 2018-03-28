@@ -395,9 +395,8 @@ void start_systemd_journal(DltSystemConfiguration *conf)
 {
 	DLT_LOG(dltsystem, DLT_LOG_DEBUG,
 			DLT_STRING("dlt-system-journal, start journal"));
-	static pthread_attr_t t_attr;
 	static pthread_t pt;
-	pthread_create(&pt, &t_attr, (void *)journal_thread, conf);
+	pthread_create(&pt, NULL, (void *)journal_thread, conf);
 	threads.threads[threads.count++] = pt;
 }
 
